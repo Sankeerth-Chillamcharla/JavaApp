@@ -26,10 +26,11 @@ pipeline {
             steps {
                 sleep 60
                 // waitForQualityGate abortPipeline: true
+                script {
                 def qg = waitForQualityGate()
                         if (qg.status != 'OK') {
                             error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                            echo "test3" }
+                            echo "test3" } }
             }
         }
         stage('Integration Test') {

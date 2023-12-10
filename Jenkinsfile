@@ -24,10 +24,8 @@ pipeline {
         }
         stage('Quality Gate') {
             steps {
-                script {
-                   def SonarQubecredentialsId = 'sonarqube'
-                   QualityGateStatus(SonarQubecredentialsId)
-                }
+                sleep 60
+                waitForQualityGate abortPipeline: true
             }
         }
         stage('Integration Test') {

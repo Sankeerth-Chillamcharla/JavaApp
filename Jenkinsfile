@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven "Maven 3.9.2", sonarqube "sonarqube"
+        maven "Maven 3.9.2"
     }
     stages {
         stage('Pull Code from Git Hub') {

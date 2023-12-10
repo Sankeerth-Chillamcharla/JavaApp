@@ -15,6 +15,11 @@ pipeline {
                 sh "mvn clean"
             }
         }
+        stage('Unit Test') {
+            steps {
+                mvnIntegrationTest()
+            }
+        }
         stage('Package') {
             steps {
                 sh "mvn package -DskipTests=True"

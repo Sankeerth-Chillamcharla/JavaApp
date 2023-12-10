@@ -15,9 +15,9 @@ pipeline {
                 sh "mvn clean"
             }
         }
-        stage('Unit Test') {
+        stage('Integration Test') {
             steps {
-                mvnIntegrationTest()
+                sh "mvn test"
             }
         }
         stage('Package') {

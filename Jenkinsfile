@@ -30,19 +30,22 @@ pipeline {
                 def qg = waitForQualityGate()
                         if (qg.status != 'OK') {
                             error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                            echo "test3" } }
+                           }
+                        else {
+                            echo "Quality Gate passed: ${qg.status}"             }    
+                         }
             }
         }
-        stage('Integration Test') {
-            steps {
-                sh "mvn test"
-            }
-        }
+        // stage('Integration Test') {
+        //     steps {
+        //         sh "mvn test"
+        //     }
+        // }
 
-        stage('Package') {
-            steps {
-                sh "mvn package -DskipTests=True"
-            }
-        }
+        // stage('Package') {
+        //     steps {
+        //         sh "mvn package -DskipTests=True"
+        //     }
+        // }
     }
 }

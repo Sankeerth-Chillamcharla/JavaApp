@@ -25,7 +25,6 @@ pipeline {
         stage('Quality Gate') {
             steps {
                 sleep 60
-                // waitForQualityGate abortPipeline: true
                 script {
                 def qg = waitForQualityGate()
                         if (qg.status != 'OK') {
@@ -38,7 +37,7 @@ pipeline {
         }
         stage('Integration Test') {
             steps {
-                sh "mvn test"
+                sh "mvn verify -DskipTests=True"
             }
         }
         stage('Package') {

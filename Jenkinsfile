@@ -20,11 +20,21 @@ pipeline {
                 sh "mvn test"
             }
         }
-        stage('SonarQube Analysis') {
-          withSonarQubeEnv('sonarqube') {
+//         stage('SonarQube Analysis') {
+//           withSonarQubeEnv('sonarqube') {
+//          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=javaapp -Dsonar.projectName='javaapp'"
+// }
+  //}
+
+ stage('Sonar Analysis'){
+    steps{
+        withSonarQubeEnv('sonarqube') {
          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=javaapp -Dsonar.projectName='javaapp'"
 }
-  }
+    }
+ }
+
+
         stage('Package') {
             steps {
                 sh "mvn package -DskipTests=True"

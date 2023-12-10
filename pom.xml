@@ -6,7 +6,7 @@
   <packaging>war</packaging>
   <version>03.00.10</version>
   <name>LWPLABS Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+  <url>http://maven.apache.org
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

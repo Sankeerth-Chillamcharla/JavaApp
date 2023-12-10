@@ -36,16 +36,15 @@ pipeline {
                          }
             }
         }
-        // stage('Integration Test') {
-        //     steps {
-        //         sh "mvn test"
-        //     }
-        // }
-
-        // stage('Package') {
-        //     steps {
-        //         sh "mvn package -DskipTests=True"
-        //     }
-        // }
+        stage('Integration Test') {
+            steps {
+                sh "mvn test"
+            }
+        }
+        stage('Package') {
+            steps {
+                sh "mvn package -DskipTests=True"
+            }
+        }
     }
 }

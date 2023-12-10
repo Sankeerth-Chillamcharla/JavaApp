@@ -22,6 +22,14 @@ pipeline {
                 }
             }
         }
+        stage('Quality Gate') {
+            steps {
+                script {
+                   def SonarQubecredentialsId = 'sonarqube'
+                   QualityGateStatus(SonarQubecredentialsId)
+                }
+            }
+        }
         stage('Integration Test') {
             steps {
                 sh "mvn test"

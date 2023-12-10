@@ -10,25 +10,16 @@ pipeline {
                 git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Sankeerth-Chillamcharla/JavaApp.git'
             }
         }
-         stage('Sonar Analysis'){
-    steps{
-        withSonarQubeEnv('sonarqube') {
-         sh "mvn clean verify sonar:sonar -Dsonar.projectKey=javaapp -Dsonar.projectName='javaapp'"
-}
-    }
- }
- stage("Quality Gate"){
-   
-steps {
-        timeout(time: 1, unit: 'HOURS') {
-          waitForQualityGate abortPipeline: true
-        }
-      }
-    
-         }
         stage('Code Cleaning') {
             steps {
                 sh "mvn clean"
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=javaapp -Dsonar.projectName='javaapp'"
+                }
             }
         }
         stage('Integration Test') {

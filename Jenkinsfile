@@ -7,7 +7,7 @@ pipeline {
         stage('Pull Code from Git Hub') {
             steps {
                 // Pull the code form SCM Repo ---> git Hub
-                git 'https://github.com/Sankeerth-Chillamcharla/JavaApp.git'
+                git 'https://github.com/Sankeerth-Chillamcharla/JavaApp.git', git branch: 'main'
             }
         }
         stage('Clean') {
